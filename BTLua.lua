@@ -1,7 +1,6 @@
 --- BTLua
-if not BTLua then
-  BTLua={}
-end
+
+local BTLua = {}
 BTLua.BTree = {}
 function BTLua.BTree:new(...)
   local _o = {}
@@ -784,7 +783,7 @@ function BTLua.BTree:parseFuncs(pfunc)
       local pat = "(.-)" .. delim .. "()"
       local nb = 0
       local lastPos
-      for part, pos in string.gfind(str, pat) do
+      for part, pos in string.gmatch(str, pat) do
           nb = nb + 1
           result[nb] = part
           lastPos = pos
@@ -881,3 +880,4 @@ function BTLua.BTree:parseNode(pnode,pattributes)
 end
 
 --debugprint=print
+return BTLua
